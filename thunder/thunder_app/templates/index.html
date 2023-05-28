@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>HOME page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./templates/style.css'>
+    
+</head>
+<body>
+    <h1>Minha Página Web</h1>
+<p>Bem-vindo ao meu site!</p>
+
+
+<button id="openPopup">Cadastrar</button>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+    <form id="cadastroForm" method="post" action="{% url 'index' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Cadastrar</button>
+      </form>
+      
+  </div>
+</div>
+
+</body>
+
+
+<script src='main.js'>document.getElementById("openPopup").addEventListener("click", function() {
+    document.getElementById("popup").style.display = "block";
+  });
+  
+  document.querySelector(".close").addEventListener("click", function() {
+    document.getElementById("popup").style.display = "none";
+  });
+  </script>
+</html>
